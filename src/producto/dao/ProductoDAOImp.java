@@ -104,16 +104,14 @@ public class ProductoDAOImp implements ProductoDAO{
         try (
                 var conexion = ConexionBBDD.conectar();
                 var sentencia = conexion.createStatement()) { 
-                var resultado = sentencia.executeQuery(query);
+                var resultado = sentencia.executeUpdate(query);
+                
             modificado =true;  
 
         } catch (SQLException e) {
             System.out.println("Error al modificar el precio del producto");
         }   
         return modificado; 
-    }
-
-
-    
+    }   
  
 }
