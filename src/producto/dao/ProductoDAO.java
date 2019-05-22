@@ -14,4 +14,6 @@ public interface ProductoDAO {
     boolean modificarProductoNombre(String nombre, int codigo);
 
     boolean modificarProductoPrecio(double precio, int codigo);
+    
+    
 }

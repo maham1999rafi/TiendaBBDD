@@ -49,6 +49,8 @@ public class Factura implements FacturaDAO {
     @Override
     public void guardar() {
         try ( var file = Files.newBufferedWriter(Paths.get(facturaArchivo), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+            file.write(String.format("*****************************************************************************\n"));
+            file.write(String.format("\t\t Factura Simlificada\n"));
             for (Producto producto : productos) {
                 file.write(String.format("%-15s%d%n%-15s%s%n%-15s%s%n%-15s%.2f%n%n",
                         "Código:", producto.getCodigo(),
@@ -56,6 +58,12 @@ public class Factura implements FacturaDAO {
                         "Descripción:", producto.getDescripcion(),
                         "Precio:", producto.getPrecio()));
             }
+            file.write(String.format("*****************************************************************************\n"));
+            for (Producto producto : productos) {
+                total = total + producto.getPrecio();
+            }
+            file.write(String.format("El precio TOTAL es:\t" + total + " €El precio TOTAL es:\t" + total + " €\n"));
+            file.write(String.format("Atendido por:\t\t" + empleadoAutenticado.getNombre()));
         } catch (IOException ex) {
             System.out.println("No se ha podido guardar el archivo " + facturaArchivo);
         }

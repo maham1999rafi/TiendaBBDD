@@ -1,9 +1,9 @@
 
 package empleado.control;
 
-import java.util.Scanner;
 import empleado.dominio.Empleado;
 import excepciones.CodigoError;
+import java.util.Scanner;
 import util.Color;
 
 public class GestionEmpleados {
@@ -24,7 +24,7 @@ public class GestionEmpleados {
         System.out.println("Bienvenido a la tienda");
         System.out.println("****************************************");
         
-        System.out.print("Introduzca el codigo de tu usuario");
+        System.out.print("Introduzca el codigo de tu usuario: ");
         while(!scan.hasNextInt()){
             System.out.print(Color.ERROR + "Debe escribir un valor numerioco" + Color.DEFAULT);
             System.out.print("Introduzca el codigo de tu usuario: ");
